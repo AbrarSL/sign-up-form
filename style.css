@@ -27,3 +27,45 @@ body {
 .logo-holder > img {
   height: 9rem;
 }
+
+fieldset {
+  margin: 0px;
+  padding: 2rem 3rem;
+  border: none;
+  box-shadow: 0 3px 6px #aaa;
+}
+
+input {
+  appearance: none;
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+}
+
+input:focus {
+  box-shadow: 0 0 6px #aaa;
+  border: 1px solid #48f;
+  outline: none;
+}
+
+form ul {
+  margin: 0;
+  padding: 0;
+}
+
+form li {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+form li:first-child() {
+  margin-top: 0;
+}
+
+li > label {
+  display: flex;
+  flex-direction: column;
+}
