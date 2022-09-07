@@ -1,10 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 
+:root {
+  --shadow-clr: #0004;
+  --accent-clr: #8a2;
+  --destr-clr: #b96122;
+  --accent-fg-clr: #efe;
+  --accent-bg-clr: #efb;
+  --border-clr: #bbb;
+  --gl-fg-clr: var(--accent-fg-clr);
+  --gl-bg-clr: #2428;
+
+  --bdr-radius: 8px;
+}
+
 body {
   margin: 0;
+  padding: 0;
   display: flex;
   height: 100vh;
   font-family: sans-serif;
+
+  background-color: var(--accent-bg-clr);
 }
 
 .image-holder {
@@ -12,64 +28,98 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .logo-holder {
-  background-color: #000c;
-  color: #fff;
+  background-color: var(--gl-bg-clr);
+  color: var(--gl-fg-clr);
+  backdrop-filter: blur(12px);
   font-family: 'Amatic SC', handwriting;
   font-size: 6rem;
   display: flex;
   align-items: center;
-  padding: 1rem 4rem;
-  margin-top: 20vh;
+
+  flex: 1;
+
+  padding: 1rem 6rem;
 }
 
-.logo-holder > img {
+.logo-holder>img {
   height: 9rem;
 }
 
 .form-holder {
-  width: max(65%, 280px);
+  width: max(100%, 360px);
+  padding: 2rem;
 }
 
 .blurb {
-  margin-top: 6rem;
   font-size: 1.25rem;
-  padding: 2rem 3rem;
+  margin: 0;
 }
 
-.blurb > span {
+.blurb>span {
   display: block;
   font-weight: bold;
   margin-top: 2rem;
 }
 
+fieldset>h2 {
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
 fieldset {
-  margin: 0px;
-  padding: 2rem 3rem;
+  padding: 2rem;
+  margin: 2rem 0;
   border: none;
-  box-shadow: 0 3px 6px #aaa;
+  border-radius: var(--bdr-radius);
+  box-shadow: 0 0 24px var(--shadow-clr);
 }
 
 input {
   appearance: none;
-  margin: 0;
+  border: 2px solid var(--border-clr);
+  border-radius: var(--bdr-radius);
+  background-color: var(--accent-fg-clr);
+
   padding: 0.25rem 0.5rem;
-  border: 1px solid #bbb;
-  border-radius: 6px;
+}
+
+input:valid {
+  border: 2px solid var(--accent-clr);
+}
+
+input:invalid {
+  border: 2px solid var(--destr-clr);
+}
+
+input:required:invalid,
+.error {
+  border: 2px dotted var(--destr-clr) !important;
 }
 
 input:focus {
-  box-shadow: 0 0 6px #aaa;
-  border: 1px solid #48f;
+  box-shadow: 0 0 6px var(--shadow-clr);
+  border: 2px solid var(--accent-clr);
   outline: none;
 }
 
+.pwd-error::after {
+  display: block;
+  content: "Passwords do not match!";
+  color: var(--destr-clr);
+  font-weight: bold;
+  font-size: 0.7rem;
+}
+
 form ul {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 form li {
@@ -79,11 +129,45 @@ form li {
   margin-top: 1rem;
 }
 
-form li:first-child() {
-  margin-top: 0;
-}
-
-li > label {
+li>label {
   display: flex;
   flex-direction: column;
+}
+
+a {
+  color: var(--accent-clr);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  opacity: 0.5;
+}
+
+a:visited {
+  color: var(--destr-clr);
+}
+
+button {
+  appearance: none;
+  border: none;
+  border-radius: var(--bdr-radius);
+  box-shadow: 0 0 12px var(--shadow-clr);
+
+  color: var(--accent-fg-clr);
+  background-color: var(--accent-clr);
+  font-weight: bold;
+  font-size: 1rem;
+
+  padding: 0.5rem 2rem;
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: none;
 }
